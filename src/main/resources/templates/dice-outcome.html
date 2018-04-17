@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Dice Outcome')">
+
+</head>
+<body>
+<nav th:replace="partials/navigation :: nav"></nav>
+<div>
+    your choice is <span th:text="${choice}"></span><br />
+    The dice rolled <span th:text="${randNum}"></span>
+</div>
+<div th:if="${choice == randNum}">
+    <h1>You Win</h1>
+</div>
+<div th:if="${choice != randNum}">
+    <h1>You Loose!</h1>
+</div>
+</body>
+</html>

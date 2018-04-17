@@ -26,7 +26,12 @@ public class MathController {
     @GetMapping("/divide/{firstNumber}/by/{secondNumber}")
     @ResponseBody
     public String divide(@PathVariable double firstNumber, @PathVariable double secondNumber) {
-        return firstNumber + " / " + secondNumber + " = " + (firstNumber / secondNumber);
+
+        if (firstNumber == 0 || secondNumber == 0) {
+            return "Can't divide by zero";
+        } else {
+            return firstNumber + " / " + secondNumber + " = " + (firstNumber / secondNumber);
+        }
     }
 
 }
