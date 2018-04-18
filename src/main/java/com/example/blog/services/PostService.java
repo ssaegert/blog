@@ -24,6 +24,8 @@ public class PostService {
     }
 
 
+
+
     //    public PostService () {
 //        posts = new ArrayList<>();
 //        createPost();
@@ -46,5 +48,9 @@ public class PostService {
         posts.add(new Post("New Post Title 2", "This is a description of post 2."));
         posts.add(new Post("New Post Title 3", "This is a description of post 3."));
         posts.add(new Post("New Post Title 4", "This is a description of post 4."));
+    }
+
+    public void save(Post post){
+        this.posts.add(post);
     }
 }
