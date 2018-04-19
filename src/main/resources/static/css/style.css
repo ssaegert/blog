@@ -43,3 +43,6 @@ form {
     width: 100%;
     clear: both;
 }
+button {
+    margin-bottom: 2em;
+}
