@@ -19,11 +19,12 @@
         <input th:type="hidden"  th:field="*{body}" th:value="${body}"/>
         <br />
         <input th:type="hidden" th:field="*{id}" th:value="${id}"/>
+        <p>Delete This Post?</p>
         <input type="submit" value="Yes" />
     </form>
 
 </main>
 
-
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
