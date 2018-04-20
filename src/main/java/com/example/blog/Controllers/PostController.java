@@ -32,9 +32,8 @@ package com.example.blog.Controllers;
 //        return "create a new post";
 //    }
 //}
-import com.example.blog.PostRepository;
+import com.example.blog.repositories.PostRepository;
 import com.example.blog.models.Post;
-import com.example.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -3,15 +3,19 @@
 <head th:replace="partials/header :: header('Dice Roll')">
 </head>
 <body>
-<nav th:replace="partials/navigation :: nav"></nav>
+    <nav th:replace="partials/navigation :: nav"></nav>
+    <main class="container">
+        <div class="select-num">
+        <a href="/dice-outcome/1">1</a>
+        <a href="/dice-outcome/2">2</a>
+        <a href="/dice-outcome/3">3</a>
+        <a href="/dice-outcome/4">4</a>
+        <a href="/dice-outcome/5">5</a>
+        <a href="/dice-outcome/6">6</a>
+        </div>
+    </main>
 
-<div class="select-num">
-<a href="/dice-outcome/1">1</a>
-<a href="/dice-outcome/2">2</a>
-<a href="/dice-outcome/3">3</a>
-<a href="/dice-outcome/4">4</a>
-<a href="/dice-outcome/5">5</a>
-<a href="/dice-outcome/6">6</a>
-</div>
+    <footer th:replace="partials/footer :: footer"></footer>
+
 </body>
 </html>

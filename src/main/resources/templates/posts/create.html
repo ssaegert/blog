@@ -10,19 +10,19 @@
     <form th:action="@{/posts/create}" th:method="post" th:object="${newPost}" id="contact-form" role="form">
         <div class="controls">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input th:field="*{title}" id="title" type="text" name="title" class="form-control" placeholder="Please enter your post title" required="required" data-error="Firstname is required." />
+                        <input th:field="*{title}" id="title" type="text" name="title" class="form-control" placeholder="Please enter your post title" required="required" />
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="body">Description</label>
-                        <input th:field="*{body}" id="body" type="text" name="body" class="form-control" placeholder="Please enter your post body" required="required" data-error="Firstname is required." />
+                        <textarea th:field="*{body}" id="body" type="text" name="body" class="form-control" placeholder="Please enter your post body" required="required" />
                     </div>
                 </div>
             </div>
@@ -35,3 +35,4 @@
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
+

@@ -15,13 +15,13 @@ public class PostService {
 //        createPost();
 //    }
 
-    public List<Post> getAllPosts() {
-        return posts;
-    }
-
-    public Post getPost(long id) {
-        return posts.get((int) id - 1);
-    }
+//    public List<Post> getAllPosts() {
+//        return posts;
+//    }
+//
+//    public Post getPost(long id) {
+//        return posts.get((int) id - 1);
+//    }
 
 
 

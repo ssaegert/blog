@@ -11,12 +11,12 @@
 
     <form th:action="@{/posts/edit}" th:method="post" th:object="${posts}">
         Title:
-        <input th:field="*{title}" th:value="${title}"/>
+        <input th:field="*{title}"/>
         <br />
         Description:
-        <input th:field="*{body}" th:value="${body}"/>
+        <input th:field="*{body}"/>
         <br />
-        <input th:type="hidden" th:field="*{id}" th:value="${id}"/>
+        <input th:type="hidden" th:field="*{id}"/>
         <input type="submit" />
     </form>
 

@@ -14,11 +14,11 @@
     </div>
     <form th:action="@{/posts/delete}" th:method="post" th:object="${posts}">
 
-        <input th:type="hidden"  th:field="*{title}" th:value="${title}"/>
+        <input th:type="hidden"  th:field="*{title}"/>
         <br />
-        <input th:type="hidden"  th:field="*{body}" th:value="${body}"/>
+        <input th:type="hidden"  th:field="*{body}"/>
         <br />
-        <input th:type="hidden" th:field="*{id}" th:value="${id}"/>
+        <input th:type="hidden" th:field="*{id}"/>
         <p>Delete This Post?</p>
         <input type="submit" value="Yes" />
     </form>
