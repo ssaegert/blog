@@ -20,9 +20,11 @@ public class diceOutcomeController {
     @GetMapping("/dice-outcome/{choice}")
 
     public String diceOutcome(@PathVariable Integer choice, Model model){
-        int randNum = (int) (Math.random() * 6 + 1);
+        int randNum1 = (int) (Math.random() * 6 + 1);
+        int randNum2 = (int) (Math.random() * 6 + 1);
         model.addAttribute("choice", choice);
-        model.addAttribute("randNum", randNum);
+        model.addAttribute("randNum1", randNum1);
+        model.addAttribute("randNum2", randNum2);
         return "dice-outcome";
     }
 }

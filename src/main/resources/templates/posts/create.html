@@ -7,13 +7,15 @@
 
 <main class="container">
 
+    <h1>Create Post</h1>
+
     <form th:action="@{/posts/create}" th:method="post" th:object="${newPost}" id="contact-form" role="form">
         <div class="controls">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input th:field="*{title}" id="title" type="text" name="title" class="form-control" placeholder="Please enter your post title" required="required" />
+                        <input th:field="*{title}" id="title" type="text" name="title" class="form-control" placeholder="Please enter your post title" />
                     </div>
                 </div>
             </div>

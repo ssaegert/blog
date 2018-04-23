@@ -11,6 +11,7 @@
     <div th:each="post : ${posts}">
         <h3><span th:text="${post.title}"></span></h3>
     <span th:text="${post.body}"></span>
+        <p>By: <span th:text="${post.user.username}"></span></p>
     </div>
     <form th:action="@{/posts/delete}" th:method="post" th:object="${posts}">
 
@@ -20,7 +21,7 @@
         <br />
         <input th:type="hidden" th:field="*{id}"/>
         <p>Delete This Post?</p>
-        <input type="submit" value="Yes" />
+        <input type="submit" value="Yes" class="btn-sm" /><button class="btn-sm">No</button>
     </form>
 
 </main>

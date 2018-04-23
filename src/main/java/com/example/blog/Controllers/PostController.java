@@ -32,8 +32,10 @@ package com.example.blog.Controllers;
 //        return "create a new post";
 //    }
 //}
+import com.example.blog.models.User;
 import com.example.blog.repositories.PostRepository;
 import com.example.blog.models.Post;
+import com.example.blog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,14 +44,18 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
 
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
-    @GetMapping("/posts")
+
+
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("posts", postDao.findAll());
         return "/posts/index";
@@ -69,8 +75,10 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String insert(@ModelAttribute Post newPost) {
+        User user = userDao.findOne(1L);
+        newPost.setUser(user);
         postDao.save(newPost);
-        return "redirect:/posts";
+        return "redirect:/";
     }
 
     @GetMapping("/posts/{id}/edit")
@@ -81,8 +89,10 @@ public class PostController {
 
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post editPost) {
+        User user = userDao.findOne(1L);
+        editPost.setUser(user);
         postDao.save(editPost);
-        return "redirect:/posts";
+        return "redirect:/";
     }
 
     @GetMapping("/posts/{id}/delete")
@@ -94,7 +104,22 @@ public class PostController {
     @PostMapping("/posts/delete")
     public String deletePost(@ModelAttribute Post deletePost) {
         postDao.delete(deletePost);
-        return "redirect:/posts";
+        return "redirect:/";
     }
+
+    @GetMapping("/posts/register")
+    public String createUser(Model viewModel) {
+        viewModel.addAttribute("newUser", new User());
+        return "/posts/register";
+    }
+
+
+
+    @PostMapping("/posts/register")
+    public String insertUser(@ModelAttribute User newUser) {
+        userDao.save(newUser);
+        return "redirect:/";
+    }
+
 
 }

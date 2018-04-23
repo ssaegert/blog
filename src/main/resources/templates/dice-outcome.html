@@ -5,15 +5,17 @@
 </head>
 <body>
 <nav th:replace="partials/navigation :: nav"></nav>
-<div>
-    your choice is <span th:text="${choice}"></span><br />
-    The dice rolled <span th:text="${randNum}"></span>
-</div>
-<div th:if="${choice == randNum}">
-    <h1>You Win</h1>
-</div>
-<div th:if="${choice != randNum}">
-    <h1>You Loose!</h1>
-</div>
+<main class="container">
+    <div>
+        your choice is <span th:text="${choice}"></span><br />
+        The dice rolled <span th:text="${randNum1}"></span> and <span th:text="${randNum2}"></span>
+    </div>
+    <div th:if="${choice == randNum1 + randNum2}">
+        <h1>You Win</h1>
+    </div>
+    <div th:if="${choice != randNum1 + randNum2}">
+        <h1>You Loose!</h1>
+    </div>
+</main>
 </body>
 </html>

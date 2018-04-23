@@ -9,15 +9,27 @@
 
     <h1>Edit Post</h1>
 
-    <form th:action="@{/posts/edit}" th:method="post" th:object="${posts}">
-        Title:
-        <input th:field="*{title}"/>
-        <br />
-        Description:
-        <input th:field="*{body}"/>
-        <br />
-        <input th:type="hidden" th:field="*{id}"/>
-        <input type="submit" />
+    <form th:action="@{/posts/edit}" th:method="post" th:object="${posts}" id="contact-form" role="form">
+        <div class="controls">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input th:field="*{title}" id="title" type="text" name="title" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <input th:field="*{body}" id="body" type="text" name="title" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <input th:type="hidden" th:field="*{id}"/>
+            <input type="submit" />
+        </div>
     </form>
 
 </main>
