@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Sign Up')"></head>
+<body>
+
+<nav th:replace="partials/navigation :: nav"></nav>
+
+<main class="container">
+
+    <h1>Sign Up</h1>
+
+    <form th:action="@{/sign-up}" method="POST" th:object="${user}" id="contact-form">
+        <div class="controls">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" th:field="*{username}" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="email">Email</label>
+                        <input id="email" th:field="*{email}" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" th:field="*{password}" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        <input value="Sign me up!" type="submit" />
+    </form>
+
+</main>
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

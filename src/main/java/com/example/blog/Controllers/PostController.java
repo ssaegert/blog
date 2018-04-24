@@ -36,6 +36,7 @@ import com.example.blog.models.User;
 import com.example.blog.repositories.PostRepository;
 import com.example.blog.models.Post;
 import com.example.blog.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -75,8 +76,9 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String insert(@ModelAttribute Post newPost) {
-        User user = userDao.findOne(1L);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newPost.setUser(user);
+        System.out.println("post user: " + newPost.getUser().getEmail());
         postDao.save(newPost);
         return "redirect:/";
     }
@@ -89,8 +91,6 @@ public class PostController {
 
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post editPost) {
-        User user = userDao.findOne(1L);
-        editPost.setUser(user);
         postDao.save(editPost);
         return "redirect:/";
     }
