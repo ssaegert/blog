@@ -39,7 +39,12 @@ import com.example.blog.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class PostController {
@@ -70,18 +75,36 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String create(Model viewModel) {
-        viewModel.addAttribute("newPost", new Post());
+        viewModel.addAttribute("post", new Post());
         return "/posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String insert(@ModelAttribute Post newPost) {
+    public String publishAd(
+            @Valid Post post,
+            Errors validation,
+            Model model
+    ) {
+        if (validation.hasErrors()) {
+//            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/create";
+        }
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newPost.setUser(user);
-        System.out.println("post user: " + newPost.getUser().getEmail());
-        postDao.save(newPost);
+        post.setUser(user);
+        postDao.save(post);
+
+        // Redirect to an appropriate page (show/edit ad or show all ads)
         return "redirect:/";
     }
+//    public String insert(@ModelAttribute Post newPost) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        newPost.setUser(user);
+//        System.out.println("post user: " + newPost.getUser().getEmail());
+//        postDao.save(newPost);
+//        return "redirect:/";
+//    }
 
     @GetMapping("/posts/{id}/edit")
     public String edit(@PathVariable long id, Model viewModel) {
