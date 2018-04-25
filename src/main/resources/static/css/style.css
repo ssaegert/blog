@@ -59,3 +59,6 @@
 /*button {*/
     /*margin-bottom: 2em;*/
 /*}*/
+.form-error {
+    color: red;
+}
